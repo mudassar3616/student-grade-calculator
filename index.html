@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calculate your exam percentage and grade instantly. Enter your obtained and total marks to get your result in seconds." />
+  <title>Grade Calculator | Student Percentage &amp; Grade Calculator</title>
+
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+
+  <!-- Manrope font (Google Fonts) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- defer: runs after the page is parsed and applies the saved theme as early as possible -->
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#calculator">Skip to calculator</a>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand" aria-label="Grade Calculator home">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+          </svg>
+        </span>
+        <span class="brand-name">Grade Calculator</span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
+      
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+          </svg>
+        </button>
+
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <h1>Calculate Your Exam Results Instantly!</h1>
+          <p class="hero-text">
+            Enter your obtained marks and total marks to discover your percentage, grade, and result in seconds. It's simple, fast, and free!
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary btn-lg" href="#calculator">Calculate My Result</a>
+            <button class="btn btn-outline btn-lg" id="sample-btn" type="button">Try a sample</button>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <svg class="hero-svg" viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg" focusable="false">
+            <rect class="art-panel" x="0" y="0" width="420" height="380" rx="32" />
+            <rect class="art-card" x="80" y="70" width="260" height="240" rx="24" />
+            <circle class="art-track" cx="210" cy="170" r="62" />
+            <circle class="art-ring" cx="210" cy="170" r="62" stroke-dasharray="389.6" stroke-dashoffset="88.5" transform="rotate(-90 210 170)" />
+            <text class="art-value" x="210" y="173" text-anchor="middle" font-size="22" font-weight="800">77.27%</text>
+            <text class="art-muted" x="210" y="193" text-anchor="middle" font-size="12" font-weight="600">Percentage</text>
+            <rect class="art-pill" x="150" y="262" width="120" height="30" rx="15" />
+            <text class="art-pill-text" x="210" y="282" text-anchor="middle" font-size="13" font-weight="800" letter-spacing="1">PASS</text>
+            <circle class="art-badge" cx="318" cy="96" r="28" />
+            <text class="art-on-badge" x="318" y="105" text-anchor="middle" font-size="26" font-weight="800">B</text>
+            <circle class="art-check" cx="92" cy="282" r="22" />
+            <path class="art-check-mark" d="M83 282l6 6 11-12" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CALCULATOR ==================== -->
+    <section class="section" id="calculator">
+      <div class="container calculator-layout">
+        <div class="section-intro">
+          <h2>Calculate Your Percentage</h2>
+          <p>Enter your examination marks below to calculate your result.</p>
+        </div>
+
+        <div class="calculator-main">
+          <form class="card calculator-card" id="calculator-form" novalidate>
+            <div class="field">
+              <label for="obtained-marks">Obtained Marks</label>
+              <input
+                type="number"
+                id="obtained-marks"
+                name="obtainedMarks"
+                placeholder="Enter your obtained marks"
+                min="0"
+                step="any"
+                inputmode="decimal"
+                required
+                aria-describedby="obtained-error"
+              />
+              <p class="field-error" id="obtained-error" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label for="total-marks">Total Marks</label>
+              <input
+                type="number"
+                id="total-marks"
+                name="totalMarks"
+                placeholder="Enter total examination marks"
+                min="0"
+                step="any"
+                inputmode="decimal"
+                required
+                aria-describedby="total-error"
+              />
+              <p class="field-error" id="total-error" aria-live="polite"></p>
+
+              <div class="presets" role="group" aria-label="Quick total marks">
+                <span class="presets-label">Quick total</span>
+                <button class="chip" type="button" data-total="100">100</button>
+                <button class="chip" type="button" data-total="500">500</button>
+                <button class="chip" type="button" data-total="1000">1000</button>
+              </div>
+            </div>
+
+            <p class="live-preview" id="live-preview" hidden></p>
+
+            <div class="form-actions">
+              <button class="btn btn-primary" id="calculate-btn" type="submit">
+                <span class="spinner" aria-hidden="true"></span>
+                <span id="calculate-label">Calculate Result</span>
+              </button>
+              <button class="btn btn-outline" id="reset-btn" type="button">Reset</button>
+            </div>
+          </form>
+
+          <!-- Screen reader announcement, updated once per calculation -->
+          <p class="sr-only" id="result-announcer" aria-live="polite"></p>
+
+          <!-- Result card: hidden until a valid calculation is made -->
+          <div class="card result-card" id="result" hidden>
+            <div class="result-header">
+              <h3>Your Result</h3>
+              <span class="status-pill" id="status-pill">PASS</span>
+            </div>
+
+            <div class="result-body">
+              <div class="ring-wrap">
+                <svg class="ring" viewBox="0 0 160 160" aria-hidden="true" focusable="false">
+                  <circle class="ring-track" cx="80" cy="80" r="68" />
+                  <circle class="ring-fill" id="ring-fill" cx="80" cy="80" r="68" stroke-dasharray="427.26" stroke-dashoffset="427.26" />
+                </svg>
+                <p class="ring-value">
+                  <span id="percentage-value">0.00</span><span class="ring-unit">%</span>
+                </p>
+              </div>
+
+              <div class="result-summary">
+                <span class="result-label">Achieved grade</span>
+                <div class="grade-badge" id="grade-badge">–</div>
+                <p class="result-message" id="result-message"></p>
+              </div>
+            </div>
+
+            <div class="result-stats">
+              <div class="stat">
+                <span class="result-label">Obtained marks</span>
+                <strong id="obtained-output">–</strong>
+              </div>
+              <div class="stat">
+                <span class="result-label">Total marks</span>
+                <strong id="total-output">–</strong>
+              </div>
+              <div class="stat">
+                <span class="result-label">Next goal</span>
+                <strong id="goal-output">–</strong>
+              </div>
+            </div>
+
+            <div class="result-actions">
+              <button class="btn btn-outline btn-sm" id="copy-btn" type="button">Copy result</button>
+            </div>
+          </div>
+
+          <!-- Recent calculations from this visit (kept in memory only) -->
+          <section class="card history" id="history" aria-labelledby="history-title" hidden>
+            <div class="history-header">
+              <h3 id="history-title">Recent calculations</h3>
+              <button class="btn-text" id="clear-history-btn" type="button">Clear</button>
+            </div>
+            <ol class="history-list" id="history-list"></ol>
+            <p class="history-note">Kept for this visit only. Select any row to calculate it again.</p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== GRADING SYSTEM ==================== -->
+    <section class="section section-alt" id="grading">
+      <div class="container">
+        <div class="section-header">
+          <h2>Understand Your Grades</h2>
+          <p>Check our grading criteria to understand how your percentage determines your academic grade.</p>
+        </div>
+
+        <ul class="grade-scale">
+          <li class="grade-cell" data-grade="A+">
+            <span class="grade-letter">A+</span>
+            <span class="grade-range">90–100%</span>
+          </li>
+          <li class="grade-cell" data-grade="A">
+            <span class="grade-letter">A</span>
+            <span class="grade-range">80–89.99%</span>
+          </li>
+          <li class="grade-cell" data-grade="B">
+            <span class="grade-letter">B</span>
+            <span class="grade-range">70–79.99%</span>
+          </li>
+          <li class="grade-cell" data-grade="C">
+            <span class="grade-letter">C</span>
+            <span class="grade-range">60–69.99%</span>
+          </li>
+          <li class="grade-cell" data-grade="D">
+            <span class="grade-letter">D</span>
+            <span class="grade-range">50–59.99%</span>
+          </li>
+          <li class="grade-cell" data-grade="F">
+            <span class="grade-letter">F</span>
+            <span class="grade-range">Below 50%</span>
+          </li>
+        </ul>
+        <p class="grade-note">Your grade is highlighted here after you calculate it.</p>
+      </div>
+    </section>
+
+    
+
+  
+
+    
+</body>
+</html>
